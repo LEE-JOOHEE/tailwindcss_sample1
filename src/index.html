@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구현을해볼까</title>
+  <link href="/dist/output.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="/dist/js/init-alpine.js"></script>
+  <!-- <script src="/dist/js/jquery-3.1.1.min.js"></script> -->
+</head>
+<body>
+  <div class="flex h-screen" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <!-- Desktop sidebar set작업 완료 -->
+    <aside class="hidden md:block">
+      <a class="logo text-logo-color" href="index.html">iris</a>
+      <ul class="UC_tabMenu">
+        <li class="icon_btn">
+          <span class="active" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+              <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!-- Black Mask -->
+    <div x-show="isSideMenuOpen" class="UC_mask sm:items-center sm:justify-center"
+      x-transition:enter="transition ease-in-out duration-150"
+      x-transition:enter-start="opacity-0" 
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in-out duration-150" 
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"></div>
+    <!-- Mobile sidebar -->
+    <aside x-show="isSideMenuOpen" class="UC_mobile_aside md:hidden" 
+      x-transition:enter="transition ease-in-out duration-150"
+      x-transition:enter-start="opacity-0 transform -translate-x-20" 
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in-out duration-150" 
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0 transform -translate-x-20"
+      @click.away="closeSideMenu" @keydown.escape="closeSideMenu">
+      <a class="logo text-logo-color" href="index.html">iris</a>
+      <ul class="UC_tabMenu">
+        <li class="icon_btn">
+          <span class="active" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+              <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="icon_btn">
+          <span class="" aria-hidden="true"></span>
+          <a href="javascript:void(0);">
+            <svg class="aside_icons" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Contents -->
+    <div class="UC_contents_wrap">
+      <!-- Header -->
+      <header class="z-10 py-4 bg-white shadow-md">
+        <div class="container max-w-none flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
+          <!-- Mobile hamburger -->
+          <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
+            <svg class="w-7 h-7" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          <!-- Search input -->
+          <div class="flex justify-start flex-1 lg:mr-32">
+            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+              <div class="absolute inset-y-0 flex items-center pl-2">
+                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <input class="w-full pl-8 pr-2 pt-2 pb-2 text-base text-gray-700 placeholder-gray-600 bg-gray-100 
+                border-2 border-gray-100 rounded-md focus:placeholder-gray-500 focus:bg-white focus:border-2 focus:border-purple-300 
+                focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="검색" aria-label="Search">
+            </div>
+          </div>    <!-- Search input end -->
+
+        </div>
+      </header>
+
+    </div>    <!-- Contents end -->
+
+  </div>
+  
+
+
+
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+
+  //aside 메뉴
+  const tabList = document.querySelectorAll('.UC_tabMenu li');
+  const tabSpan = document.querySelectorAll('.UC_tabMenu span');
+  for(var i = 0; i < tabList.length; i++){
+    tabList[i].addEventListener('click', function(e){
+      e.preventDefault();
+      for(var j=0; j < tabSpan.length; j++){
+        // console.log(tabSpan[j]);
+        tabSpan[j].classList.remove("active");
+      }
+      // console.log(this.childNodes)
+      this.childNodes[1].classList.add("active");
+    });
+  }
+
+
+  
+});
+
+console.log(document.querySelectorAll('.aside_icons'))
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Dongle-Bold';
+  src: url('./fonts/Dongle-Bold.ttf')
+}
+@font-face {
+  font-family: 'Dongle-Light';
+  src: url('./fonts/Dongle-Light.ttf')
+}
+@font-face {
+  font-family: 'Dongle-Regular';
+  src: url('./fonts/Dongle-Regular.ttf')
+}
+
+body{background-color: #EDEFF2;}
+.logo{margin-left: 16px; font-size: 30px; line-height: 36px; font-weight: 700;}
+aside{background-color: #FFFFFF; color: #B4B5B8; z-index: 20; 
+  width: 80px; overflow-y: auto; flex-shrink: 0;
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  padding: 16px 0;}
+aside li:hover{color: #121A4C; 
+  transition-property:background-color,border-color,color,fill,stroke; 
+  transition-duration:.15s;}
+aside > ul{margin-top: 32px;}
+aside > ul li{position: relative; padding: 12px 24px;}
+aside > ul li:nth-last-child(1){position: absolute; bottom: 20px; padding: 12px 24px;}
+aside > ul li > .active{position: absolute; top: 0; bottom: 0; left: 0; width: 4px;
+  border-top-right-radius: 8px; border-bottom-right-radius: 8px; background-color: #121A4C;}
+aside > ul li > a{display: inline-flex; align-items: center; width: 100%;
+  font-size: 14px; line-height: 20px; font-weight: 600;}
+.aside_icons{width: 32px; height: 32px;}
+.UC_mask{position: fixed; top: 4.75rem; right: 0px; bottom: 0px; left: 0px; z-index: 10;
+  display: flex; align-items: flex-end; background-color: #000; opacity: 0.5;}
+
+.UC_mobile_aside{position: fixed; top: 0px; bottom: 0px; z-index: 20; flex-shrink: 0;
+  width: 80px/* 5rem */; margin-top:4.75rem; overflow-y: auto; background-color: #fff;}
+
+.UC_contents_wrap{display: flex; flex-direction: column; flex: 1 1 0%; width: 100%;}
