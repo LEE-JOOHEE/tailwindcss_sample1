@@ -32,16 +32,19 @@ function data() {
     isNotificationsMenuOpen: false,
     toggleNotificationsMenu() {
       this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
+      this.isProfileMenuOpen = false
     },
     closeNotificationsMenu() {
-      this.isNotificationsMenuOpen = false
+      this.isNotificationsMenuOpen = true
+      // console.log(this.isNotificationsMenuOpen)
     },
     isProfileMenuOpen: false,
     toggleProfileMenu() {
       this.isProfileMenuOpen = !this.isProfileMenuOpen
+      this.isNotificationsMenuOpen = false
     },
     closeProfileMenu() {
-      this.isProfileMenuOpen = false
+      this.isProfileMenuOpen = true
     },
     isPagesMenuOpen: false,
     togglePagesMenu() {
